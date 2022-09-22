@@ -1,10 +1,15 @@
 # README
 
-Do Not Rent List for Hotels
+Do Not Rent List for Hotels. Helps hotel staff keep a list of unwanted guests.
+
+![Preview](preview.png)
+
+Live - https://dnrlist.com
 
 # Ruby version
-ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
-Rails 7.0.2.3
+ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-linux]
+
+Rails 7.0.4
 
 # Standard Steps in all my apps:
 - In the Gemfile add:
@@ -13,43 +18,12 @@ gem "rails-erd"
 gem "annotate"
 ```
   In terminal:
+  $ bundle install <br>
   $ bundle exec rails g erd:install <br>
   $ rails g annotate:install <br>
 
 - Add Bootstrap: <br>
-  - In the Gemfile add:
-  ```
-  gem "sassc-rails"
-  gem 'bootstrap', '~> 5.1.3'
-  ```
-  - In development.rb add:
-   ```
-   config.sass.inline_source_maps = true
-   ```
-  - Clear assets cache and rename application.css <br>
-  ```
-  $ rm -r tmp/cache/assets
-  $ mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
-  ```
-  - In application.scss add:
-  ```scss
-  @import "bootstrap";
-  ```
-  - In assets.rb add: <br>
-  ```
-  Rails.application.config.assets.precompile += %w( application.scss )
-  ```
-  - Add JS: jquery, bootstrap, popperjs
-  ```
-  $ ./bin/importmap pin jquery@3.6.0 --download
-  $ ./bin/importmap pin bootstrap@5.1.3 --download
-  $ ./bin/importmap pin @popperjs/core@2.11.2 --download
-
-  ```
-  - In application.js add: <br>
-  ```js
-  import "bootstrap"
-  ```
+https://dev.to/overdrivemachines/add-bootstrap-5-and-font-awesome-6-to-rails-7-31b3
 
 
 * System dependencies

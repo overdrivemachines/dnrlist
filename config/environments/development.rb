@@ -68,6 +68,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  # Turn on inline source maps
+  # Enable Inline Source Maps
   config.sass.inline_source_maps = true
 end
