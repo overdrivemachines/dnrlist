@@ -24,4 +24,5 @@ group :development do
   gem "web-console"
   gem "rails-erd"
   gem "annotate"
+  gem "faker"
 end
