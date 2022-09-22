@@ -1,0 +1,87 @@
+<header></header>
+<main class="holygrail-body">
+  <section class="holygrail-content">
+    <div class="dnr-title">
+      <h1>Do Not Rent List</h1>
+    </div>
+    <div class="dnr-container" id="guests">
+      <form id="form">
+        <div class="wrapper">
+          <label for="name">Black Listed Guests</label>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGuestForm">
+            Add
+          </button>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-text" id="ba1"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <input type="text" class="form-control search" placeholder="Search" aria-label="name" aria-describedby="basic-addon1" name="name" id="name" autocomplete="off">
+        </div>
+      </form>
+      <div class="index-container">
+        <% ('a'..'z').each do |c| %>
+          <a href="#<%= c %>"><%= c.upcase %></a>
+        <% end %>
+        <!-- <a href="#a">A</a> -->
+
+      </div>
+      <div class="list-container">
+        <ul class="list">
+          <li class="person">
+            <h3 class="name">Jonny <span class="last-name">Stromberg</span></h3>
+            <div class="details-container">
+              <div class="born-container">
+                DOB: <span class="born">09/16/1981</span>
+              </div>
+              <div class="reason-container">
+                Reason: <span class="reason">Too noisy</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="newGuestForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Add New Guest</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form autocomplete="off">
+              <div class="modal-body">
+
+                <div class="my-3">
+                  <label for="firstname" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstname" autocomplete="none">
+                </div>
+                <div class="my-3">
+                  <label for="lastname" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lastname" autocomplete="none">
+
+                </div>
+                <div class="my-3">
+                  <label for="dob" class="form-label">DOB</label>
+                  <input type="date" class="form-control" id="dob" autocomplete="none">
+                </div>
+
+                <div class="my-3">
+                  <label for="reason" class="form-label">Reason</label>
+                  <input type="text" class="form-control" id="reason" autocomplete="none">
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer></footer>

@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+
+:root {
+  --color-background: #0c1013;
+  --color-text1: #fff;
+  --color-text2: #5b5861;
+  --color-primary: #3a82fb;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: url(https://overdrivemachines.github.io/music-player/img/backround.jpg)
+    no-repeat center center fixed;
+  background-size: cover;
+  color: var(--color-text1);
+  font-family: "League Spartan", sans-serif;
+}
+
+.holygrail-body {
+  display: flex;
+  flex: 1;
+}
+.holygrail-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dnr-title {
+  margin-top: 3.3em;
+  h1 {
+    font-size: 2.66em;
+    font-weight: bold;
+  }
+}
+
+.dnr-container {
+  width: 980px;
+  background-color: #0c1013;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  // padding: 32px;
+}
+
+#form {
+  background: rgb(51, 51, 51);
+  background: linear-gradient(
+    90deg,
+    rgba(23, 21, 22, 1) 0%,
+    rgba(19, 19, 19, 19) 100%
+  );
+  width: 100%;
+  padding: 2em;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  font-size: 2em;
+  padding-top: 0.33em;
+}
+.btn-primary {
+  background: var(--color-primary);
+}
+
+label {
+  font-size: 2em;
+  display: block;
+  // text-align: center;
+}
+
+.input-group {
+  margin-top: 1.667em;
+}
+
+.input-group-text {
+  color: #a5a4a9;
+  font-size: 1.667em;
+  background: #2a292e;
+  outline: none;
+  border: none;
+  border-radius: 0.667em;
+  padding-left: 0.667em;
+  padding-right: 0.1em;
+}
+
+.form-control {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.667em;
+  color: var(--color-text1);
+  background: #2a292e;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5em;
+  margin-left: 0.1em;
+  border-radius: 0.667em;
+  outline: none;
+  border: none;
+
+  transition: all 0.3s;
+  line-height: 1em;
+}
+.form-control:focus {
+  background: #2a292e;
+  // outline: none !important;
+  box-shadow: none;
+  color: var(--color-text1);
+  // font-family: "League Spartan", sans-serif;
+  // font-weight: 300;
+}
+.form-control::placeholder {
+  color: #a5a4a9;
+}
+input:valid {
+  // border: 1px solid green;
+}
+input:invalid {
+  border: 1px solid red;
+}
+
+.index-container {
+  margin: 2em;
+  text-align: center;
+  a {
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.3em;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  a::after {
+    font-weight: bold;
+    color: var(--color-text2);
+    content: " • ";
+  }
+  a:last-of-type:after {
+    content: none;
+  }
+}
+
+.list-container {
+  margin: 2em;
+  // font-weight: 300;
+}
+
+ul.list {
+  list-style: none;
+
+  li {
+    border-bottom: 1px solid #313133;
+    padding: 1em 0;
+  }
+  li:last-of-type {
+    border-bottom: none;
+  }
+
+  h3.name {
+    font-size: 2em;
+  }
+  span.last-name {
+    font-weight: 700;
+  }
+
+  .details-container {
+    display: flex;
+    margin-top: 0.667em;
+    font-family: "Source Code Pro", monospace;
+  }
+
+  .details-container > div {
+    margin-right: 2em;
+    color: #999;
+  }
+}
+
+.modal-content {
+  background: var(--color-background);
+  padding: 2em;
+}
+
+.modal-header {
+  border-color: #313133;
+}
+
+.modal-title {
+  font-size: 2em;
+}
+.modal-footer {
+  border-color: #313133;
+  padding-top: 2em;
+}
