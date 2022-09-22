@@ -28,17 +28,22 @@
       </div>
       <div class="list-container">
         <ul class="list">
-          <li class="person">
-            <h3 class="name">Jonny <span class="last-name">Stromberg</span></h3>
-            <div class="details-container">
-              <div class="born-container">
-                DOB: <span class="born">09/16/1981</span>
+          <% @guests.each do |guest| %>
+            <li class="person">
+              <h3 class="name"><%= guest.firstname %> <span class="last-name"><%= guest.lastname %></span> <span class="added" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="<%= guest.created_at.strftime("%D") %>">
+                  Added <%= distance_of_time_in_words_to_now(guest.created_at) %> ago
+                </span> </h3>
+              <div class="details-container">
+                <div class="born-container">
+                  DOB: <span class="born"><%= guest.dob.strftime("%D") %></span>
+                </div>
+                <div class="reason-container">
+                  Reason: <span class="reason"><%= guest.reason %></span>
+                </div>
               </div>
-              <div class="reason-container">
-                Reason: <span class="reason">Too noisy</span>
-              </div>
-            </div>
-          </li>
+
+            </li>
+          <% end %>
         </ul>
       </div>
 

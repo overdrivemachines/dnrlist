@@ -163,6 +163,8 @@ input:invalid {
 
 ul.list {
   list-style: none;
+  margin: 0;
+  padding: 0;
 
   li {
     border-bottom: 1px solid #313133;
@@ -188,6 +190,14 @@ ul.list {
   .details-container > div {
     margin-right: 2em;
     color: #999;
+  }
+
+  .added {
+    color: #999;
+    font-size: 0.667em;
+    vertical-align: middle;
+    float: right;
+    text-decoration: underline dotted;
   }
 }
 
