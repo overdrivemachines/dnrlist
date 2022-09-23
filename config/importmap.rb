@@ -13,5 +13,8 @@ pin "@fortawesome/fontawesome-free", to: "https://ga.jspm.io/npm:@fortawesome/fo
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 
+# List JS
+pin "list", to: "list.js", preload: true
+
 # Custom JS
 pin "my_script", to: "my_script.js", preload: true

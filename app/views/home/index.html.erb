@@ -9,7 +9,7 @@
         <div class="wrapper">
           <label for="name">Black Listed Guests</label>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGuestForm">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGuestModal">
             Add
           </button>
         </div>
@@ -29,63 +29,30 @@
       <div class="list-container">
         <ul class="list">
           <% @guests.each do |guest| %>
-            <li class="person">
-              <h3 class="name"><%= guest.firstname %> <span class="last-name"><%= guest.lastname %></span> <span class="added" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="<%= guest.created_at.strftime("%D") %>">
+            <li class="guest">
+              <h3 class="name">
+                <%= guest.firstname %>
+                <span class="last-name"><%= guest.lastname %></span>
+                <a href="#" class="edit-link">Edit</a>
+                <span class="added" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="Added on <%= guest.created_at.strftime("%D") %>">
                   Added <%= distance_of_time_in_words_to_now(guest.created_at) %> ago
-                </span> </h3>
+                </span>
+              </h3>
               <div class="details-container">
-                <div class="born-container">
-                  DOB: <span class="born"><%= guest.dob.strftime("%D") %></span>
+                <div class="dob-container">
+                  DOB: <span class="dob"><%= guest.dob.strftime("%D") %></span>
                 </div>
                 <div class="reason-container">
                   Reason: <span class="reason"><%= guest.reason %></span>
                 </div>
               </div>
-
             </li>
           <% end %>
         </ul>
       </div>
 
       <!-- Modal -->
-      <div class="modal fade" id="newGuestForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Add New Guest</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form autocomplete="off">
-              <div class="modal-body">
-
-                <div class="my-3">
-                  <label for="firstname" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="firstname" autocomplete="none">
-                </div>
-                <div class="my-3">
-                  <label for="lastname" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="lastname" autocomplete="none">
-
-                </div>
-                <div class="my-3">
-                  <label for="dob" class="form-label">DOB</label>
-                  <input type="date" class="form-control" id="dob" autocomplete="none">
-                </div>
-
-                <div class="my-3">
-                  <label for="reason" class="form-label">Reason</label>
-                  <input type="text" class="form-control" id="reason" autocomplete="none">
-                </div>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Add</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+      <%= render "new", guest: @guest %>
     </div>
   </section>
 </main>
