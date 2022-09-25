@@ -1,0 +1,76 @@
+<header>
+  <p class="msg-container">
+    <% if notice %>
+      Notice: <%= notice %>
+      <br>
+    <% end %>
+    Params: <%= params.inspect %>
+    <br>
+    Flash: <%= flash.inspect %>
+    <br>
+    <% if flash.empty? %>
+      Flash is empty
+    <% end %>
+
+  </p>
+</header>
+<main class="holygrail-body">
+  <section class="holygrail-content">
+    <div class="dnr-title">
+      <h1>Do Not Rent List</h1>
+    </div>
+    <div class="dnr-container" id="guests">
+      <div id="search-container">
+        <div class="wrapper">
+          <label for="name">Black Listed Guests</label>
+          <!-- Button that opens Modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGuestModal">
+            Add
+          </button>
+        </div>
+        <div class="input-group">
+          <span class="input-group-text" id="ba1"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <!-- Search Field -->
+          <input type="text" class="form-control search" placeholder="Search" aria-label="name" aria-describedby="basic-addon1" name="name" id="name" autocomplete="off">
+        </div>
+      </div>
+      <div class="index-container">
+        <% ('a'..'z').each do |c| %>
+          <a href="#<%= c %>"><%= c.upcase %></a>
+        <% end %>
+        <!-- <a href="#a">A</a> -->
+      </div>
+      <div class="list-container">
+        <ul class="list">
+          <% @guests.each do |guest| %>
+            <li class="guest">
+              <h3 class="name">
+                <%= guest.firstname %>
+                <span class="last-name"><%= guest.lastname %></span>
+                <!-- Edit Guest Link -->
+                <%= link_to "Edit", edit_guest_path(guest), class: "edit-link", data: { turbo_frame: "edit-guest-modal-container" } %>
+                <span class="added" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="Added on <%= guest.created_at.strftime("%D") %>">
+                  Added <%= distance_of_time_in_words_to_now(guest.created_at) %> ago
+                </span>
+              </h3>
+              <div class="details-container">
+                <div class="dob-container">
+                  DOB: <span class="dob"><%= guest.dob.strftime("%D") %></span>
+                </div>
+                <div class="reason-container">
+                  Reason: <span class="reason"><%= guest.reason %></span>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <%= render "new", guest: @guest %>
+  </section>
+</main>
+<footer></footer>
+
+<%= turbo_frame_tag "edit-guest-modal-container" %>
