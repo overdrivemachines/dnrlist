@@ -33,6 +33,9 @@ class GuestsController < ApplicationController
   end
 
   def destroy
+    name = "#{@guest.firstname} #{@guest.lastname}"
+    @guest.destroy
+    redirect_to root_url, notice: "#{name} was successfully removed from this list."
   end
 
   private

@@ -43,7 +43,7 @@
       <div class="list-container">
         <ul class="list">
           <% @guests.each do |guest| %>
-            <li class="guest">
+            <li class="guest" id="<%= dom_id guest %>">
               <h3 class="name">
                 <%= guest.firstname %>
                 <span class="last-name"><%= guest.lastname %></span>

@@ -55,10 +55,26 @@ document.addEventListener("turbo:load", () => {
         <%= turbo_frame_tag "edit-guest-modal-container" do %>
           ...
         <% end %>
+  - \_form.html.erb:
+    ```erb
+    <%= form_with model:guest, data: {turbo_frame: "_top"} do |form| %>
+      ...
+      <%= link_to "Delete", guest, data: { turbo_method: :delete, turbo_frame: "_top" } %>
+      ...
+      <%= form.submit "Save", class: "btn btn-primary", id: "btn-save", data: {"bs-dismiss": "modal"} %>
+    <% end %>
+    ```
+
+- Breaking out of Turbo Frame: https://www.lewisyoul.co.uk/posts/breaking-out-of-turbo-frames
+  - turbo_frame: "\_top"
+
+- DELETE method: https://stackoverflow.com/a/71048843/1553074
+  - <%= link_to 'Delete', some_path, data: {turbo_method: :delete} %>
+  - <%= link_to 'Delete', some_path,
+  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
 
 # TODO
 
-- <a href="#" onclick="changeModalToEdit(this)" class="edit-link" data-guest-id="<%= guest.id %>" data-bs-toggle="modal" data-bs-target="#newGuestModal">Edit</a>
 
 
 * System dependencies
