@@ -1,0 +1,37 @@
+<!-- This form will post to /guests -->
+<%= form_with model:guest, data: {turbo_frame: "_top"} do |form| %>
+  <div class="modal-body">
+    <% if guest.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
+
+        <ul>
+          <% guest.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="my-3">
+      <%= form.label :firstname, "First Name" %>
+      <%= form.text_field :firstname, class: "form-control", autocomplete: "off" %>
+    </div>
+    <div class="my-3">
+      <%= form.label :lastname, "Last Name" %>
+      <%= form.text_field :lastname, class: "form-control", autocomplete: "off" %>
+    </div>
+    <div class="my-3">
+      <%= form.label :dob, "Date of Birth" %>
+      <%= form.date_field :dob, class: "form-control", max: (Date.today - 10.years) %>
+    </div>
+    <div class="my-3">
+      <%= form.label :reason %>
+      <%= form.text_field :reason, class: "form-control", autocomplete: "off" %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <%= form.submit "Save", class: "btn btn-primary", id: "btn-save", data: {"bs-dismiss": "modal"} %>
+  </div>
+<% end %>
