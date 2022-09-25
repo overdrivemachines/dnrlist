@@ -40,6 +40,14 @@ body {
   align-items: center;
 }
 
+header .msg-container {
+  width: 100%;
+  padding: 1em;
+  font-size: 1.33em;
+  background: var(--color-background);
+  color: var(--color-text1);
+}
+
 .dnr-title {
   margin-top: 3.3em;
   h1 {
@@ -56,7 +64,7 @@ body {
   // padding: 32px;
 }
 
-#form {
+#search-container {
   background: rgb(51, 51, 51);
   background: linear-gradient(
     90deg,

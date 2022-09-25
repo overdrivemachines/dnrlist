@@ -28,6 +28,38 @@ gem "annotate"
 - Add Bootstrap: <br>
 https://dev.to/overdrivemachines/add-bootstrap-5-and-font-awesome-6-to-rails-7-31b3
 
+- Make JS reload on redirect
+```js
+document.addEventListener("turbo:load", () => {
+  console.log("turbo loaded");
+});
+
+```
+
+# References
+- JS reload on redirect - https://stackoverflow.com/questions/43583255/script-not-work-after-redirect-in-rails
+- respond_to
+  - https://api.rubyonrails.org/classes/ActionController/MimeResponds.html
+  - https://www.justinweiss.com/articles/respond-to-without-all-the-pain/
+- responders
+  - https://stackoverflow.com/questions/38600628/undefined-method-respond-to-in-rails-5-controller
+  - https://stackoverflow.com/questions/24877075/how-to-include-respond-to-when-you-dont-inherit-from-applicationcontroller-in-r
+- Turbo
+  - After page load: $('#myModal').modal('show');
+  - <%= link_to "Edit", edit_guest_path(guest), data: {turbo_frame: "modal", "bs-toggle": "modal", "bs-target": "#editGuestModal" } ,class: "edit-link" %>
+  - https://stackoverflow.com/questions/67315225/how-can-i-execute-javascript-when-a-new-turbo-frame-is-loaded
+- How to add turbo frame?
+  - Edit Link: link_tag "edit", edit_guest_path(guest), data: { turbo_frame: "modal" }
+  - Below Edit Link: <%= turbo_frame_tag "modal-container" %>
+  - edit.html.erb:
+        <%= turbo_frame_tag "edit-guest-modal-container" do %>
+          ...
+        <% end %>
+
+# TODO
+
+- <a href="#" onclick="changeModalToEdit(this)" class="edit-link" data-guest-id="<%= guest.id %>" data-bs-toggle="modal" data-bs-target="#newGuestModal">Edit</a>
+
 
 * System dependencies
 
