@@ -31,12 +31,10 @@
     </div>
   </div>
   <div class="modal-footer">
-    <div class="left">
+    <% if !guest.new_record? %>
       <%= link_to "Delete", guest, class: "btn btn-danger", data: { turbo_method: :delete, turbo_frame: "_top", turbo_confirm: 'Are you sure?' } %>
-    </div>
-    <div class="right">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <% end %>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
       <%= form.submit "Save", class: "btn btn-primary", id: "btn-save", data: {"bs-dismiss": "modal"} %>
-    </div>
   </div>
 <% end %>
