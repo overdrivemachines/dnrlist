@@ -9,6 +9,7 @@
 }
 html {
   box-sizing: border-box;
+  scroll-behavior: "smooth";
 }
 *,
 *:before,
@@ -46,6 +47,7 @@ header .msg-container {
   font-size: 1.33em;
   background: var(--color-background);
   color: var(--color-text1);
+  border-radius: 0;
 }
 
 .dnr-title {
@@ -230,5 +232,15 @@ ul.list {
 .modal-footer {
   border-color: #313133;
   padding-top: 2em;
-  justify-content: space-between;
+  // justify-content: space-between;
+}
+
+
+#return-to-top {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  cursor: pointer; /* Add a mouse pointer on hover */
 }
