@@ -15,19 +15,40 @@ window.$ = $;
 
 // This function runs on every page "load"
 document.addEventListener("turbo:load", () => {
-
-
-  // list.js needs to be initialized
-  let options = {
-    valueNames: ["name", "dob"]
-  };
-
-  // Looks for element with id "guests"
-  let guestList = new List("guests", options);
-
   // Bootstrap Popover
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
+
+  // Search guests
+  const searchEl = document.getElementById("name");
+  function searchGuest() {
+    const li = document.querySelectorAll(".guest");
+    const searchName = searchEl.value.toUpperCase();
+    let name = "";
+
+    if (searchName.length < 3) {
+      for (let i = 0; i < li.length; i++) {
+        li[i].style.display = "none";
+      }
+    } else {
+      // Loop through all list items, and hide those who don't match the search query
+      for (let i = 0; i < li.length; i++) {
+        name = li[i]
+          .getElementsByTagName("h3")[0]
+          .childNodes[0].textContent.trim();
+        name = name + " " + li[i].querySelector(".last-name").textContent.trim() + " " + li[i].querySelector(".dob").textContent.trim();
+        // console.log(name);
+        if (name.toUpperCase().indexOf(searchName) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  searchEl.addEventListener("keyup", searchGuest);
 
 
   // Return to top button:

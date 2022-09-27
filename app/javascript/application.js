@@ -4,5 +4,4 @@ import "controllers";
 import "@popperjs/core";
 import "bootstrap";
 import "@fortawesome/fontawesome-free";
-import "list";
 import "my_script";
