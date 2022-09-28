@@ -1,6 +1,3 @@
-<div class="dnr-title">
-  <h1>Do Not Rent List</h1>
-</div>
 <div class="dnr-container" id="guests">
   <div id="search-container">
     <div class="wrapper">
@@ -18,7 +15,7 @@
   </div>
   <div class="index-container">
     <% ('a'..'z').each do |c| %>
-      <a href="#<%= c %>"><%= c.upcase %></a>
+      <a href="#<%= c %>" id="index-<%= c %>" class="index-link"><%= c.upcase %></a>
     <% end %>
     <!-- <a href="#a">A</a> -->
   </div>
