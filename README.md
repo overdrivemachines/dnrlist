@@ -73,6 +73,8 @@ document.addEventListener("turbo:load", () => {
   - <%= link_to 'Delete', some_path,
   data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
 
+- Checkbox: https://moderncss.dev/pure-css-custom-checkbox-style/
+
 # TODO
 
 

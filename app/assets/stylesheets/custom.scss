@@ -6,6 +6,9 @@
   --color-text1: #fff;
   --color-text2: #5b5861;
   --color-primary: #3a82fb;
+
+  --color-check: #3a82fb;
+  --color-check-disabled: #959495;
 }
 html {
   box-sizing: border-box;
@@ -28,6 +31,47 @@ body {
   background-size: cover;
   color: var(--color-text1);
   font-family: "League Spartan", sans-serif;
+}
+
+//////////////////////////////////////////////////////////////////
+/// Navigation
+//////////////////////////////////////////////////////////////////
+
+.nav-links {
+  float: right;
+  margin: 1em 1em 0 0;
+  // padding: 0 1em;
+  background: var(--color-background);
+  border: 1px solid var(--color-primary);
+
+  ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+    display: flex;
+  }
+
+  .nav-item {
+    border-right: 1px solid var(--color-primary);
+    transition: all 0.3s ease-out;
+  }
+  .nav-item:last-child {
+    border-right: none;
+  }
+  .nav-item:hover {
+    background: var(--color-primary);
+    a {
+      color: #000;
+    }
+  }
+
+  a {
+    display: block;
+    font-size: 2em;
+    padding: 0.5em;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+  }
 }
 
 .holygrail-body {
@@ -64,6 +108,7 @@ header .msg-container {
   margin-top: 32px;
   margin-bottom: 32px;
   // padding: 32px;
+  border: 1px solid var(--color-primary);
 }
 
 #search-container {
@@ -75,6 +120,7 @@ header .msg-container {
   );
   width: 100%;
   padding: 2em;
+  border-bottom: 1px solid var(--color-primary);
 }
 
 .wrapper {
@@ -112,7 +158,7 @@ label {
   padding-right: 0.1em;
 }
 
-.form-control {
+.form-control, .field input {
   font-family: "League Spartan", sans-serif;
   font-size: 1.667em;
   color: var(--color-text1);
@@ -179,6 +225,7 @@ ul.list {
   li {
     border-bottom: 1px solid #313133;
     padding: 1em 0;
+    // display: none;
   }
   li:last-of-type {
     border-bottom: none;
@@ -243,4 +290,159 @@ ul.list {
   right: 30px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
   cursor: pointer; /* Add a mouse pointer on hover */
+}
+
+//////////////////////////////////////////////////////////////////
+/// Login Forms
+//////////////////////////////////////////////////////////////////
+
+.auth-container {
+  width: 640px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: 1px solid var(--color-primary);
+
+  .auth-header {
+    padding: 1em;
+    border-bottom: 1px solid #313133;
+  }
+
+  .auth-title {
+    font-size: 2.66em;
+    font-weight: bold;
+  }
+
+  .alert {
+    font-size: 1.33em;
+    margin-bottom: 0;
+  }
+
+  .auth-body {
+    padding: 1em;
+
+
+
+    .field {
+      margin: 1em 0;
+    }
+    .field-2 {
+      margin: 2em 0;
+    }
+  }
+
+  .auth-footer {
+    padding: 1em;
+    border-top: 1px solid #313133;
+    border-bottom: 1px solid #313133;
+  }
+}
+
+.shared-links {
+
+  padding: 1em;
+  a {
+    font-size: 2em;
+    display: block;
+    margin: 0.5em 0;
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+/// Checkbox
+//////////////////////////////////////////////////////////////////
+
+// https://moderncss.dev/pure-css-custom-checkbox-style/
+.check {
+  // font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  // font-weight: bold;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.check + .check {
+  margin-top: 1em;
+}
+
+.check--disabled {
+  color: var(--color-check-disabled);
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--color-check);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  // outline: max(2px, 0.15em) solid currentColor;
+  // outline-offset: max(2px, 0.15em);
+
+  outline: 4px solid currentColor;
+  outline-offset: 4px;
+
+}
+
+input[type="checkbox"]:disabled {
+  --color-check: var(--color-check-disabled);
+
+  color: var(--color-check-disabled);
+  cursor: not-allowed;
+}
+
+
+// Change Autocomplete Styles
+// https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/
+// https://stackoverflow.com/a/67536975/1553074
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid var(--color-primary);
+  -webkit-text-fill-color: var(--color-primary);
+  -webkit-box-shadow: 0 0 0px 1000px #2a292e inset;
+  transition: background-color 5000s ease-in-out 0s;
+  font-size: 32px;
 }
