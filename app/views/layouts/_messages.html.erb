@@ -1,19 +1,18 @@
-<p class="msg-container alert alert-dismissible fade show" role="alert">
-  <% if notice %>
-    Notice: <%= notice %>
+<% if !flash.empty? %>
+  <p class="msg-container alert alert-dismissible fade show" role="alert">
+    <% if notice %>
+      Notice: <%= notice %>
+      <br>
+    <% end %>
+    <% if alert %>
+      Alert: <%= alert %>
+      <br>
+    <% end %>
+    <!-- Params: <%= params.inspect %>
     <br>
-  <% end %>
-  <% if alert %>
-    Alert: <%= alert %>
-    <br>
-  <% end %>
-  Params: <%= params.inspect %>
-  <br>
-  Flash: <%= flash.inspect %>
-  <br>
-  <% if flash.empty? %>
-    Flash is empty
-  <% end %>
+    Flash: <%= flash.inspect %>
+    <br> -->
 
-  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-</p>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+  </p>
+<% end %>
