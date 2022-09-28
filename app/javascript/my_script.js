@@ -15,30 +15,60 @@ window.$ = $;
 
 // This function runs on every page "load"
 document.addEventListener("turbo:load", () => {
+  //////////////////////////////////////////////////
   // Bootstrap Popover
+  //////////////////////////////////////////////////
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 
 
-  // Search guests
+  //////////////////////////////////////////////////
+  // Search Guest Names
+  //////////////////////////////////////////////////
+
+  // returns: John Smith 05/12/81
+  function getUnformattedNameDOB(guestEl) {
+    let name = guestEl.querySelector(".name").childNodes[0].textContent.trim();
+    name = name + " " + guestEl.querySelector(".last-name").textContent.trim()
+    name = name + " " + guestEl.querySelector(".dob").textContent.trim();
+    return name;
+  }
+
+  function getLastnameInitial(guestEl) {
+    return guestEl.querySelector(".last-name").textContent.trim().slice(0, 1);
+  }
+
   const searchEl = document.getElementById("name");
-  function searchGuest() {
+  function searchGuest(e, indexLetter = "") {
+
+
     const li = document.querySelectorAll(".guest");
     const searchName = searchEl.value.toUpperCase();
     let name = "";
+    let lastnameInitial = "";
 
-    if (searchName.length < 3) {
+    if (indexLetter != "") {
+      console.log("Searching for Guests starting with letter", indexLetter);
+      // Loop through all list items, and hide those who don't match the starting letter
+      for (let i = 0; i < li.length; i++) {
+        lastnameInitial = getLastnameInitial(li[i]).toUpperCase();
+
+        if (lastnameInitial == indexLetter) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+    else if (searchName.length < 3) {
       for (let i = 0; i < li.length; i++) {
         li[i].style.display = "none";
       }
-    } else {
+    }
+    else {
       // Loop through all list items, and hide those who don't match the search query
       for (let i = 0; i < li.length; i++) {
-        name = li[i]
-          .getElementsByTagName("h3")[0]
-          .childNodes[0].textContent.trim();
-        name = name + " " + li[i].querySelector(".last-name").textContent.trim() + " " + li[i].querySelector(".dob").textContent.trim();
-        // console.log(name);
+        name = getUnformattedNameDOB(li[i]);
         if (name.toUpperCase().indexOf(searchName) > -1) {
           li[i].style.display = "";
         } else {
@@ -48,10 +78,31 @@ document.addEventListener("turbo:load", () => {
     }
   }
 
-  searchEl.addEventListener("keyup", searchGuest);
+  // Add event listener only when searchEl is present
+  if (searchEl) {
+    searchEl.addEventListener("keyup", searchGuest);
+  }
 
+  //////////////////////////////////////////////////
+  // Index Link
+  //////////////////////////////////////////////////
+  function callSearch(e) {
+    e.preventDefault();
+    const letter = e.target.id.slice(-1).toUpperCase();
+    searchGuest(e, letter);
+  }
 
-  // Return to top button:
+  const indexLinks = $(".index-link");
+  if (indexLinks) {
+    for (let i = 0; i < indexLinks.length; i++) {
+      const indexLink = indexLinks[i];
+      indexLink.addEventListener("click", callSearch);
+    }
+  }
+
+  //////////////////////////////////////////////////
+  // Return to Top Button
+  //////////////////////////////////////////////////
   const returnToTopBtn = $("#return-to-top");
 
   // When the user scrolls down 520px from the top of the document, show the button
@@ -79,7 +130,4 @@ document.addEventListener("turbo:load", () => {
 document.addEventListener("turbo:frame-load", function (e) {
   console.log("frame load", Math.random());
 });
-
-
-
 
