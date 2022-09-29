@@ -10,7 +10,7 @@
     <div class="input-group">
       <span class="input-group-text" id="ba1"><i class="fa-solid fa-magnifying-glass"></i></span>
       <!-- Search Field -->
-      <input type="text" class="form-control search" placeholder="Search" aria-label="name" aria-describedby="basic-addon1" name="name" id="name" autocomplete="off">
+      <input type="text" class="form-control search" placeholder="Search by Name or DOB (mm/dd/yy)" aria-label="name" aria-describedby="basic-addon1" name="name" id="name" autocomplete="off">
     </div>
   </div>
   <div class="index-container">
@@ -23,21 +23,30 @@
     <ul class="list">
       <% @guests.each do |guest| %>
         <li class="guest" id="<%= dom_id guest %>">
-          <h3 class="name">
-            <%= guest.firstname %>
-            <span class="last-name"><%= guest.lastname %></span>
-            <!-- Edit Guest Link -->
-            <%= link_to "Edit", edit_guest_path(guest), class: "edit-link", data: { turbo_frame: "edit-guest-modal-container" } %>
-            <span class="added" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="Added on <%= guest.created_at.strftime("%D") %>">
-              Added <%= distance_of_time_in_words_to_now(guest.created_at) %> ago
-            </span>
-          </h3>
-          <div class="details-container">
-            <div class="dob-container">
-              DOB: <span class="dob"><%= guest.dob.strftime("%D") %></span>
+          <div class="guest-main">
+            <h3 class="name">
+              <%= guest.firstname %>
+              <span class="last-name"><%= guest.lastname %></span>
+              <!-- Edit Guest Link -->
+              <%= link_to "Edit", edit_guest_path(guest), class: "edit-link", data: { turbo_frame: "edit-guest-modal-container" } %>
+            </h3>
+            <div class="details-container">
+              <div class="dob-container">
+                DOB: <span class="dob"><%= guest.dob.strftime("%D") %></span>
+              </div>
+              <div class="reason-container">
+                Reason: <span class="reason"><%= guest.reason %></span>
+              </div>
             </div>
-            <div class="reason-container">
-              Reason: <span class="reason"><%= guest.reason %></span>
+          </div>
+          <div class="guest-meta">
+            <div class="added">
+              <div class="added-datetime" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="Added on <%= guest.created_at.strftime("%D") %>">
+                Added <%= distance_of_time_in_words_to_now(guest.created_at) %> ago
+              </div>
+              <div class="added-by">
+                by PropertyName
+              </div>
             </div>
           </div>
         </li>
