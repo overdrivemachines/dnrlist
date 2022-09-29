@@ -225,6 +225,9 @@ ul.list {
   li {
     border-bottom: 1px solid #313133;
     padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     // display: none;
   }
   li:last-of-type {
@@ -255,11 +258,21 @@ ul.list {
     color: #999;
   }
 
+  .guest-meta {
+    width: 280px;
+    // border: 1px solid green;
+    text-align: right;
+  }
+
   .added {
     color: #999;
-    font-size: 0.667em;
-    vertical-align: middle;
-    float: right;
+    font-size: 1.33em;
+    // vertical-align: middle;
+    // float: right;
+    // text-decoration: underline dotted;
+  }
+
+  .added-datetime {
     text-decoration: underline dotted;
   }
 }
