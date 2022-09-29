@@ -1,6 +1,9 @@
 class GuestsController < ApplicationController
   before_action :set_guest, only: %i[edit update destroy]
 
+  def new
+  end
+
   def index
     @guest = Guest.new
     @guest.firstname = Faker::Name.first_name
@@ -16,7 +19,8 @@ class GuestsController < ApplicationController
       flash[:new] = true
       redirect_to root_url, notice: "#{@guest.firstname} #{@guest.lastname} was added to the DNR list"
     else
-      render :edit, notice: "There was an error"
+      @guests = Guest.all.order(:lastname)
+      render :index, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +32,7 @@ class GuestsController < ApplicationController
     if @guest.update(guest_params)
       redirect_to root_url, notice: "#{@guest.firstname} #{@guest.lastname} was updated"
     else
-      # did not save
+      render :edit, status: :unprocessable_entity
     end
   end
 

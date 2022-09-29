@@ -56,6 +56,12 @@
 </div>
 
 <!-- Modal -->
-<%= render "new", guest: @guest %>
+<!-- If the new form has errors only then hello_controller.js is executed because
+we want the modal to re-open automatically on render index -->
+<% if @guest.errors.count > 0 %>
+  <%= render partial: "new", locals: { guest: @guest, has_errors: 1 } %>
+<% else %>
+  <%= render partial: "new", locals: { guest: @guest, has_errors: 0 } %>
+<% end %>
 
 <%= turbo_frame_tag "edit-guest-modal-container" %>
