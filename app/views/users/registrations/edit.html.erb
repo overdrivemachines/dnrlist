@@ -1,6 +1,7 @@
 <div class="auth-container modal-content">
   <div class="auth-header">
-    <h2 class="auth-title">Edit <%= resource_name.to_s.humanize %></h2>
+    <h2 class="auth-title">Change Account Password</h2>
+    <h4>Edit <%= link_to "Account Details", users_edit_details_path %></h4>
   </div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, "data-turbo": :false }) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
@@ -16,7 +17,7 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+        <%= f.label :password, "New Password" %> <i>(leave blank if you don't want to change it)</i>
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         <% if @minimum_password_length %>
           <em><%= @minimum_password_length %> characters minimum</em>
@@ -24,7 +25,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %>
+        <%= f.label :password_confirmation, "New Password Confirmation" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
       </div>
 
@@ -36,6 +37,7 @@
 
     <div class="auth-footer">
       <%= f.submit "Update", class: "btn btn-primary" %>
+      <%= link_to "Cancel", root_path, class: "btn btn-secondary mx-2" %>
     </div>
   <% end %>
 

@@ -1,0 +1,31 @@
+<div class="auth-container modal-content">
+  <div class="auth-header">
+    <h2 class="auth-title">Edit Account Details</h2>
+    <h4>Change <%= link_to "Account Password", edit_user_registration_path %></h4>
+  </div>
+
+  <%= form_for(@user, url: users_save_details_path, data: { turbo: false }) do |f| %>
+    <% if alert %>
+      <div class="alert alert-danger">
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <div class="auth-body">
+      <div class="field">
+        <%= f.label :name, "Hotel Name (eg. Super 8 Sacramento)" %>
+        <%= f.text_field :name, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :display_name, "Display Name (eg. s8chico)" %>
+        <%= f.text_field :display_name, autocomplete: "off", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="auth-footer">
+      <%= f.submit "Save", class: "btn btn-primary" %>
+      <%= link_to "Cancel", root_path, class: "btn btn-secondary mx-2" %>
+    </div>
+  <% end %>
+</div>

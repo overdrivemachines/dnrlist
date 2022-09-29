@@ -1,4 +1,6 @@
 class GuestsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+  before_action :complete_registration, if: :user_signed_in?
   before_action :set_guest, only: %i[edit update destroy]
 
   def new
@@ -6,6 +8,9 @@ class GuestsController < ApplicationController
 
   def index
     @guest = Guest.new
+    if user_signed_in?
+      @guest.user_id = current_user.id
+    end
     @guest.firstname = Faker::Name.first_name
     @guest.lastname = Faker::Name.last_name
     @guest.dob = Faker::Date.birthday(min_age: 18, max_age: 65)
@@ -13,7 +18,10 @@ class GuestsController < ApplicationController
   end
 
   def create
-    @guest = Guest.new(guest_params)
+    if !user_signed_in?
+      redirect_to root_url
+    end
+    @guest = current_user.guests.build(guest_params)
 
     if @guest.save
       flash[:new] = true
@@ -50,5 +58,11 @@ class GuestsController < ApplicationController
 
   def guest_params
     params.require(:guest).permit(:firstname, :lastname, :dob, :reason)
+  end
+
+  def complete_registration
+    if current_user.name.blank? || current_user.display_name.blank?
+      redirect_to users_edit_details_path, notice: "Please complete registration."
+    end
   end
 end

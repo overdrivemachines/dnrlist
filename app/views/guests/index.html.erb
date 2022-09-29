@@ -3,9 +3,13 @@
     <div class="wrapper">
       <label for="name">Black Listed Guests</label>
       <!-- Button that opens Modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGuestModal">
-        Add
-      </button>
+      <% if user_signed_in? %>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGuestModal">
+          Add
+        </button>
+      <% else %>
+        <%= link_to "Add", new_user_session_path, class: "btn btn-primary" %>
+      <% end %>
     </div>
     <div class="input-group">
       <span class="input-group-text" id="ba1"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -28,7 +32,9 @@
               <%= guest.firstname %>
               <span class="last-name"><%= guest.lastname %></span>
               <!-- Edit Guest Link -->
-              <%= link_to "Edit", edit_guest_path(guest), class: "edit-link", data: { turbo_frame: "edit-guest-modal-container" } %>
+              <% if guest.user == current_user %>
+                <%= link_to "Edit", edit_guest_path(guest), class: "edit-link", data: { turbo_frame: "edit-guest-modal-container" } %>
+              <% end %>
             </h3>
             <div class="details-container">
               <div class="dob-container">
@@ -45,7 +51,7 @@
                 Added <%= distance_of_time_in_words_to_now(guest.created_at) %> ago
               </div>
               <div class="added-by">
-                by PropertyName
+                by <%= guest.user.display_name %>
               </div>
             </div>
           </div>

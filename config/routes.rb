@@ -67,6 +67,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     confirmations: 'users/confirmations'
   }
+
+  devise_scope :user do
+    get "users/edit_details" => "users/registrations#edit_details"
+    patch "users/save_details" => "users/registrations#save_details"
+  end
+
   root "guests#index"
   resources :guests, except: [:show]
 end

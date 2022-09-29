@@ -7,7 +7,7 @@
     </li>
     <% if user_signed_in? %>
       <li class="nav-item">
-        <%= link_to edit_user_registration_path, data: {"bs-toggle": "popover", "bs-trigger": "hover focus", "bs-placement": "bottom", "bs-content": "My Account" } do %>
+        <%= link_to users_edit_details_path, data: {"bs-toggle": "popover", "bs-trigger": "hover focus", "bs-placement": "bottom", "bs-content": "My Account" } do %>
           <i class="fa-solid fa-user"></i>
         <% end %>
       </li>
