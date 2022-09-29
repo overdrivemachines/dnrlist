@@ -16,7 +16,6 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 gem "bootstrap", "~> 5.2.0"
 gem "devise"
-gem "letter_opener"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -27,4 +26,6 @@ group :development do
   gem "rails-erd"
   gem "annotate"
   gem "faker"
+  # Preview email in the default browser instead of sending it.
+  gem "letter_opener"
 end
