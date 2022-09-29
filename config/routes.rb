@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static_pages/message'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',
