@@ -4,7 +4,7 @@ export default class extends Controller {
   connect() {
     // this.element.textContent = "Hello World!"
     // alert("connected");
-    const editGuestModal = new bootstrap.Modal(this.element, {});
-    editGuestModal.show();
+    const guestModal = new bootstrap.Modal(this.element, {});
+    guestModal.show();
   }
 }
