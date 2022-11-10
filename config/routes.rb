@@ -20,6 +20,8 @@
 #                    new_user_confirmation GET    /users/confirmation/new(.:format)                                                                 users/confirmations#new
 #                        user_confirmation GET    /users/confirmation(.:format)                                                                     users/confirmations#show
 #                                          POST   /users/confirmation(.:format)                                                                     users/confirmations#create
+#                       users_edit_details GET    /users/edit_details(.:format)                                                                     users/registrations#edit_details
+#                       users_save_details PATCH  /users/save_details(.:format)                                                                     users/registrations#save_details
 #                                     root GET    /                                                                                                 guests#index
 #                                   guests GET    /guests(.:format)                                                                                 guests#index
 #                                          POST   /guests(.:format)                                                                                 guests#create

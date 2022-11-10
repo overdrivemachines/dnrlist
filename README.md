@@ -36,6 +36,10 @@ document.addEventListener("turbo:load", () => {
 
 ```
 
+# Domain
+
+yourhotelhelper.com
+
 # References
 - JS reload on redirect - https://stackoverflow.com/questions/43583255/script-not-work-after-redirect-in-rails
 - respond_to
@@ -74,6 +78,7 @@ document.addEventListener("turbo:load", () => {
   data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
 
 - Checkbox: https://moderncss.dev/pure-css-custom-checkbox-style/
+
 
 # TODO
 

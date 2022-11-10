@@ -26,8 +26,7 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  background: url(https://overdrivemachines.github.io/music-player/img/backround.jpg)
-    no-repeat center center fixed;
+  background: url(https://overdrivemachines.github.io/music-player/img/backround.jpg) no-repeat center center fixed;
   background-size: cover;
   color: var(--color-text1);
   font-family: "League Spartan", sans-serif;
@@ -99,6 +98,10 @@ header .msg-container {
   h1 {
     font-size: 2.66em;
     font-weight: bold;
+    a {
+      text-decoration: none;
+      color: var(--color-text1);
+    }
   }
 }
 
@@ -113,11 +116,7 @@ header .msg-container {
 
 #search-container {
   background: rgb(51, 51, 51);
-  background: linear-gradient(
-    90deg,
-    rgba(23, 21, 22, 1) 0%,
-    rgba(19, 19, 19, 19) 100%
-  );
+  background: linear-gradient(90deg, rgba(23, 21, 22, 1) 0%, rgba(19, 19, 19, 19) 100%);
   width: 100%;
   padding: 2em;
   border-bottom: 1px solid var(--color-primary);
@@ -158,7 +157,8 @@ label {
   padding-right: 0.1em;
 }
 
-.form-control, .field input {
+.form-control,
+.field input {
   font-family: "League Spartan", sans-serif;
   font-size: 1.667em;
   color: var(--color-text1);
@@ -298,7 +298,6 @@ ul.list {
   // justify-content: space-between;
 }
 
-
 #return-to-top {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
@@ -331,12 +330,13 @@ ul.list {
   .alert {
     font-size: 1.33em;
     margin-bottom: 0;
+    ul {
+      margin-bottom: 0;
+    }
   }
 
   .auth-body {
     padding: 1em;
-
-
 
     .field {
       margin: 1em 0;
@@ -354,7 +354,6 @@ ul.list {
 }
 
 .shared-links {
-
   padding: 1em;
   a {
     font-size: 2em;
@@ -432,7 +431,6 @@ input[type="checkbox"]:focus {
 
   outline: 4px solid currentColor;
   outline-offset: 4px;
-
 }
 
 input[type="checkbox"]:disabled {
@@ -441,7 +439,6 @@ input[type="checkbox"]:disabled {
   color: var(--color-check-disabled);
   cursor: not-allowed;
 }
-
 
 // Change Autocomplete Styles
 // https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/
@@ -459,6 +456,7 @@ select:-webkit-autofill:focus {
   border: 1px solid var(--color-primary);
   -webkit-text-fill-color: var(--color-primary);
   -webkit-box-shadow: 0 0 0px 1000px #2a292e inset;
+  box-shadow: 0 0 0px 1000px #2a292e inset;
   transition: background-color 5000s ease-in-out 0s;
   font-size: 32px;
 }

@@ -31,7 +31,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.update(user_details_params)
       redirect_to root_path, notice: "Your account details have been saved."
     else
-      redirect_to users_edit_details_path, notice: "There has been an error."
+      # redirect_to users_edit_details_path, alert: "There has been an error."
+      render :edit_details, status: :unprocessable_entity
     end
   end
 

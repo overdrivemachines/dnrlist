@@ -35,4 +35,7 @@ class User < ApplicationRecord
          :confirmable, :trackable
 
   has_many :guests
+
+  validates :display_name, uniqueness: { case_sensitive: false }
+  validates :display_name, format: { with: /\A[a-zA-Z0-9]+\Z/, message: "is invalid. It can only contain letters and numbers. Spaces and special characters are not allowed." }
 end

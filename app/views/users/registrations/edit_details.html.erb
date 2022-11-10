@@ -11,6 +11,18 @@
       </div>
     <% end %>
 
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% @user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <div class="auth-body">
       <div class="field">
         <%= f.label :name, "Hotel Name (eg. Super 8 Sacramento)" %>
