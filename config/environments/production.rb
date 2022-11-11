@@ -101,8 +101,6 @@ Rails.application.configure do
     user_name: Rails.application.credentials.dig(:email, :user),
     password: Rails.application.credentials.dig(:email, :password),
     authentication: :plain,
-    enable_starttls_auto: true,
-    tls:                  true,
     enable_starttls_auto: true
   }
 end
