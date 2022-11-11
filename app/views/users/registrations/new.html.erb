@@ -30,6 +30,11 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
       </div>
+
+      <div class="field">
+        <%= f.label :display_name %>
+        <%= f.text_field :display_name, class: "form-control" %>
+      </div>
     </div>
 
     <div class="auth-footer">
