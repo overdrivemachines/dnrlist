@@ -36,6 +36,10 @@ document.addEventListener("turbo:load", () => {
 
 ```
 
+# Reset Database
+
+$ rails db:migrate:reset
+
 # Domain
 
 yourhotelhelper.com
@@ -78,6 +82,10 @@ yourhotelhelper.com
   data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
 
 - Checkbox: https://moderncss.dev/pure-css-custom-checkbox-style/
+
+- Send emails
+  - App Passwords: https://myaccount.google.com/apppasswords
+  - https://medium.com/analytics-vidhya/securely-send-emails-from-rails-app-with-action-mailer-and-figaro-gem-26e4ff9fe5da
 
 
 # TODO
