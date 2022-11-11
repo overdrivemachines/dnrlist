@@ -11,9 +11,9 @@ class GuestsController < ApplicationController
     if user_signed_in?
       @guest.user_id = current_user.id
     end
-    @guest.firstname = Faker::Name.first_name
-    @guest.lastname = Faker::Name.last_name
-    @guest.dob = Faker::Date.birthday(min_age: 18, max_age: 65)
+    # @guest.firstname = Faker::Name.first_name
+    # @guest.lastname = Faker::Name.last_name
+    # @guest.dob = Faker::Date.birthday(min_age: 18, max_age: 65)
     @guests = Guest.all.order(:lastname)
   end
 
