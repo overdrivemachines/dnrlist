@@ -468,3 +468,28 @@ select:-webkit-autofill:focus {
     // margin-right: 0.5em;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .dnr-container {
+    width: 100%;
+    border: none;
+  }
+  #search-container {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .index-container {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+  .list-container {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+  h3.name {
+    font-size: 1.5em;
+  }
+  ul.list .guest-meta {
+    width: inherit;
+  }
+}
