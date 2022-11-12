@@ -488,6 +488,7 @@ select:-webkit-autofill:focus {
   }
   ul.list h3.name {
     font-size: 1.5em;
+    margin-bottom: 0;
   }
   ul.list .guest-meta {
     width: inherit;
@@ -497,5 +498,11 @@ select:-webkit-autofill:focus {
   }
   ul.list li {
     align-items: flex-end;
+  }
+  ul.list .details-container {
+    margin-top: 0;
+  }
+  ul.list .details-container > div {
+    margin-right: 1em;
   }
 }
