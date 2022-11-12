@@ -486,13 +486,16 @@ select:-webkit-autofill:focus {
     margin-left: 1em;
     margin-right: 1em;
   }
-  h3.name {
+  ul.list h3.name {
     font-size: 1.5em;
   }
   ul.list .guest-meta {
     width: inherit;
   }
-  .added {
+  ul.list .added {
     font-size: 0.8em;
+  }
+  ul.list li {
+    align-items: flex-end;
   }
 }
