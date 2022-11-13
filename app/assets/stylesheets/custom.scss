@@ -461,6 +461,18 @@ select:-webkit-autofill:focus {
   font-size: 32px;
 }
 
+//////////////////////////////////////////////////////////////////
+/// Footer
+//////////////////////////////////////////////////////////////////
+footer {
+  width: 100%;
+  margin-top: 1em;
+  padding: 4em 1em;
+  text-align: center;
+  background: var(--color-background);
+}
+
+
 @media (max-width: 1024px) {
   .dnr-container {
     width: 95%;
