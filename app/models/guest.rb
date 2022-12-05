@@ -3,10 +3,14 @@
 # Table name: guests
 #
 #  id         :integer          not null, primary key
-#  dob        :date             not null
+#  city       :string
+#  dob        :date
 #  firstname  :string(25)       not null
+#  id_number  :string
 #  lastname   :string(25)       not null
 #  reason     :string(50)       not null
+#  state      :string
+#  zip        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer          not null

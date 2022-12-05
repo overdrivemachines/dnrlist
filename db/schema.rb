@@ -10,15 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_29_041918) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_012647) do
   create_table "guests", force: :cascade do |t|
     t.string "firstname", limit: 25, null: false
     t.string "lastname", limit: 25, null: false
-    t.date "dob", null: false
+    t.date "dob"
     t.string "reason", limit: 50, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "id_number"
     t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
