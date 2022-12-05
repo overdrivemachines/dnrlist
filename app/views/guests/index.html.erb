@@ -38,7 +38,8 @@
             </h3>
             <div class="details-container">
               <div class="dob-container">
-                DOB: <span class="dob"><%= guest.dob.strftime("%D") %></span>
+                DOB:
+                  <span class="dob"><%= guest.dob.strftime("%D") if !guest.dob.nil? %></span>
               </div>
               <div class="reason-container">
                 Reason: <span class="reason"><%= guest.reason %></span>
