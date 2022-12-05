@@ -502,7 +502,8 @@ footer {
     margin-bottom: 0;
   }
   ul.list .guest-meta {
-    width: inherit;
+    // width: inherit;
+    display: none;
   }
   ul.list .added {
     font-size: 0.8em;
@@ -512,6 +513,7 @@ footer {
   }
   ul.list .details-container {
     margin-top: 0;
+    display: block;
   }
   ul.list .details-container > div {
     margin-right: 1em;
