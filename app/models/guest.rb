@@ -25,4 +25,6 @@
 #
 class Guest < ApplicationRecord
   belongs_to :user
+
+  validates :firstname, :lastname, :reason, presence: true
 end
