@@ -19,8 +19,7 @@ document.addEventListener("turbo:load", () => {
   // Bootstrap Popover
   //////////////////////////////////////////////////
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
-
+  const popoverList = [...popoverTriggerList].map((popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl));
 
   //////////////////////////////////////////////////
   // Search Guest Names
@@ -28,10 +27,13 @@ document.addEventListener("turbo:load", () => {
 
   // returns: John Smith 05/12/81
   function getUnformattedNameDOB(guestEl) {
-    let name = guestEl.querySelector(".name").childNodes[0].textContent.trim();
-    name = name + " " + guestEl.querySelector(".last-name").textContent.trim()
-    name = name + " " + guestEl.querySelector(".dob").textContent.trim();
-    return name;
+    let name =
+      guestEl.querySelector(".name").childNodes[0].textContent.trim() +
+      " " +
+      guestEl.querySelector(".last-name").textContent.trim() +
+      " " +
+      guestEl.querySelector(".dob").textContent.trim();
+    return name.trim();
   }
 
   function getLastnameInitial(guestEl) {
@@ -40,8 +42,6 @@ document.addEventListener("turbo:load", () => {
 
   const searchEl = document.getElementById("name");
   function searchGuest(e, indexLetter = "") {
-
-
     const li = document.querySelectorAll(".guest");
     const searchName = searchEl.value.toUpperCase();
     let name = "";
@@ -59,13 +59,11 @@ document.addEventListener("turbo:load", () => {
           li[i].style.display = "none";
         }
       }
-    }
-    else if (searchName.length < 3) {
+    } else if (searchName.length < 3) {
       for (let i = 0; i < li.length; i++) {
         li[i].style.display = "none";
       }
-    }
-    else {
+    } else {
       // Loop through all list items, and hide those who don't match the search query
       for (let i = 0; i < li.length; i++) {
         name = getUnformattedNameDOB(li[i]);
@@ -106,7 +104,9 @@ document.addEventListener("turbo:load", () => {
   const returnToTopBtn = $("#return-to-top");
 
   // When the user scrolls down 520px from the top of the document, show the button
-  window.onscroll = function() {scrollFunction()};
+  window.onscroll = function () {
+    scrollFunction();
+  };
 
   function scrollFunction() {
     if (document.body.scrollTop > 520 || document.documentElement.scrollTop > 520) {
@@ -123,11 +123,9 @@ document.addEventListener("turbo:load", () => {
   }
 
   window.returnToTop = returnToTop;
-
 });
 
 // This function runs on every turbo frame
 document.addEventListener("turbo:frame-load", function (e) {
   console.log("frame load", Math.random());
 });
-
