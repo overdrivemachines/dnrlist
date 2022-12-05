@@ -34,7 +34,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable
 
-  has_many :guests
+  has_many :guests, dependent: :destroy
 
   validates :display_name, presence: true
   validates :display_name, uniqueness: { case_sensitive: false }
