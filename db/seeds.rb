@@ -5,6 +5,23 @@ def create_guests
   end
 end
 
+def create_users
+  [
+    { email: "a@a.com", password: "manager", display_name: "a", name: "a" },
+    { email: "b@b.com", password: "manager", display_name: "b", name: "b" }
+  ].each do |attrs|
+    user = User.find_or_initialize_by(email: attrs[:email])
+    user.assign_attributes(
+      password: attrs[:password],
+      password_confirmation: attrs[:password],
+      display_name: attrs[:display_name],
+      name: attrs[:name]
+    )
+    user.skip_confirmation! if user.respond_to?(:skip_confirmation!)
+    user.save!
+  end
+end
+
 def create_guests_from_file
   i = 1
   File.foreach(Rails.root.join('db', 'in.txt')) do |line|
@@ -18,4 +35,5 @@ def create_guests_from_file
   end
 end
 
+create_users
 create_guests_from_file
