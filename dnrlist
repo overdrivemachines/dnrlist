@@ -1,3 +1,7 @@
+# This file is in /etc/nginx/sites-enabled
+# Reload nginx:
+# sudo nginx -t
+# sudo systemctl reload nginx
 server {
 
   server_name yourhotelhelper.com www.yourhotelhelper.com;
@@ -5,6 +9,12 @@ server {
 
   passenger_enabled on;
   passenger_app_env production;
+  # Set the full path to the Ruby interpreter Passenger should use
+  passenger_ruby /home/deploy/.rvm/rubies/ruby-3.4.7/bin/ruby;
+
+  # Helpful for debugging Passenger/Rails boot errors
+  error_log /var/log/nginx/dnrlist.error.log;
+  access_log /var/log/nginx/dnrlist.access.log;
 
   location /cable {
     passenger_app_group_name dnrlist_websocket;
@@ -26,28 +36,22 @@ server {
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
-
-
-
 }
 server {
-    if ($host = www.yourhotelhelper.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
+  if ($host = www.yourhotelhelper.com) {
+      return 301 https://$host$request_uri;
+  } # managed by Certbot
 
 
-    if ($host = yourhotelhelper.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
+  if ($host = yourhotelhelper.com) {
+      return 301 https://$host$request_uri;
+  } # managed by Certbot
 
 
   listen 80;
   listen [::]:80;
 
   server_name yourhotelhelper.com www.yourhotelhelper.com;
-    return 404; # managed by Certbot
-
-
-
+  return 404; # managed by Certbot
 
 }
