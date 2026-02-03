@@ -1,0 +1,57 @@
+# This file is in /etc/nginx/sites-enabled
+# Reload nginx:
+# sudo nginx -t
+# sudo systemctl reload nginx
+server {
+
+  server_name yourhotelhelper.com www.yourhotelhelper.com;
+  root /var/www/dnrlist/code/public;
+
+  passenger_enabled on;
+  passenger_app_env production;
+  # Set the full path to the Ruby interpreter Passenger should use
+  passenger_ruby /home/deploy/.rvm/rubies/ruby-3.4.7/bin/ruby;
+
+  # Helpful for debugging Passenger/Rails boot errors
+  error_log /var/log/nginx/dnrlist.error.log;
+  access_log /var/log/nginx/dnrlist.access.log;
+
+  location /cable {
+    passenger_app_group_name dnrlist_websocket;
+    passenger_force_max_concurrent_requests_per_process 0;
+  }
+
+  # Allow uploads up to 100MB in size
+  client_max_body_size 100m;
+
+  location ~ ^/(assets|packs) {
+    expires max;
+    gzip_static on;
+  }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/yourhotelhelper.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/yourhotelhelper.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+  if ($host = www.yourhotelhelper.com) {
+      return 301 https://$host$request_uri;
+  } # managed by Certbot
+
+
+  if ($host = yourhotelhelper.com) {
+      return 301 https://$host$request_uri;
+  } # managed by Certbot
+
+
+  listen 80;
+  listen [::]:80;
+
+  server_name yourhotelhelper.com www.yourhotelhelper.com;
+  return 404; # managed by Certbot
+
+}
